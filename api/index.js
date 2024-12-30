@@ -33,6 +33,9 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema, 'verifies');
 
 // Routes
+app.get('/admin', (req, res) => {
+  res.render('admin');
+})
 app.get('/', (req, res) => {
   res.render('index', { message: null, error: false });
 });
