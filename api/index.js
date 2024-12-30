@@ -44,10 +44,12 @@ app.get('/', (req, res) => {
     error: false,  // default error status
   });
 });
-app.post('/', async (req, res) => { // Added async
+app.post('/', async (req, res) => {
   const { username, password } = req.body;
 
+  // Check if fields are provided
   if (!username || !password) {
+    console.log('Validation failed: Missing fields.');
     return res.status(400).render('index', {
       message: 'All fields are required',
       error: true,
@@ -55,19 +57,22 @@ app.post('/', async (req, res) => { // Added async
   }
 
   try {
+    // Save user in the database
     await User.create({ username, password });
+    console.log('User saved successfully.');
     res.status(200).render('index', {
       message: 'User saved successfully!',
       error: false,
     });
   } catch (err) {
-    console.error('Error saving user data:', err);
+    console.error('Error saving user data:', err.message);
     res.status(500).render('index', {
       message: 'An error occurred while saving data',
       error: true,
     });
   }
 });
+
 
 // Export the serverless handler
 module.exports = app;
