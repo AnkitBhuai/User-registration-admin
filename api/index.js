@@ -34,15 +34,15 @@ const User = mongoose.model('User', UserSchema, 'verifies');
 
 // Routes
 app.get('/register', (req, res) => {
-   res.render('admin', {
-    message: null, // or provide a default message
-    error: false,  // default error status
-  });
+   res.render('admin');
 });
 
 
 app.get('/', (req, res) => {
-  res.render('index'); // Default route renders admin login form
+ res.render('index', {
+    message: null, // or provide a default message
+    error: false,  // default error status
+  });
 });
 app.post('/', async (req, res) => { // Added async
   const { username, password } = req.body;
