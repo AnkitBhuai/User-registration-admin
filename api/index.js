@@ -37,7 +37,11 @@ app.get('/register', (req, res) => {
   res.render('admin'); // Render the registration form
 });
 
-app.post('/register', async (req, res) => { // Added async
+
+app.get('/', (req, res) => {
+  res.render('index'); // Default route renders admin login form
+});
+app.post('/', async (req, res) => { // Added async
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -60,10 +64,6 @@ app.post('/register', async (req, res) => { // Added async
       error: true,
     });
   }
-});
-
-app.get('/', (req, res) => {
-  res.render('admin'); // Default route renders admin login form
 });
 
 // Export the serverless handler
