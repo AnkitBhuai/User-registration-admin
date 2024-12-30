@@ -75,8 +75,9 @@ app.post('/register', async (req, res) => {
 });
 
 app.get('/convert', (req, res) => {
-  res.render('base64');
-})
+    res.render('base64', { imageData: null });
+});
+
 
 // Export the serverless handler
 module.exports = app;
