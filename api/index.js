@@ -6,7 +6,7 @@ const app = express();
 
 // Set up database connection
 mongoose
-  .connect(process.env.VERIFICATION_DB_URI || 'mongodb://127.0.0.1:27017/Verify', {
+  .connect(process.env.VERIFICATION_DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -34,7 +34,10 @@ const User = mongoose.model('User', UserSchema, 'verifies');
 
 // Routes
 app.get('/register', (req, res) => {
-  res.render('admin'); // Render the registration form
+   res.render('admin', {
+    message: null, // or provide a default message
+    error: false,  // default error status
+  });
 });
 
 
