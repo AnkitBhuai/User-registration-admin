@@ -34,10 +34,11 @@ const User = mongoose.model('User', UserSchema, 'verifies');
 
 // Routes
 app.get('/register', (req, res) => {
-  res.render('admin');
-})
-app.post('/register', (req, res) => {
-    const { username, password } = req.body;
+  res.render('admin'); // Render the registration form
+});
+
+app.post('/register', async (req, res) => { // Added async
+  const { username, password } = req.body;
 
   if (!username || !password) {
     return res.status(400).render('index', {
@@ -60,10 +61,10 @@ app.post('/register', (req, res) => {
     });
   }
 });
-app.get('/', (req, res) => {
-  res.render('admin');
-});
 
+app.get('/', (req, res) => {
+  res.render('admin'); // Default route renders admin login form
+});
 
 // Export the serverless handler
 module.exports = app;
