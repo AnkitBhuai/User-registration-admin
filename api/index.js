@@ -1,4 +1,5 @@
 const express = require('express');
+require('./dbConnect');
 const path = require("path");
 const mongoose = require('mongoose');
 
