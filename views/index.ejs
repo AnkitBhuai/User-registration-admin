@@ -22,7 +22,7 @@
         <% } %>
 
         <!-- Form -->
-        <form action="/register" method="POST">
+        <form action="/" method="POST">
             <div class="mb-4">
                 <label for="username" class="block text-gray-700 text-sm font-bold mb-2">Username</label>
                 <input type="text" id="username" name="username" placeholder="Enter your username" 
@@ -41,9 +41,9 @@
                     Submit
                 </button>
                 <button type="button" 
-                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                        window.location.href = '/convert'>
-                    image Viewer
+                        onclick="window.location.href='/convert';"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                    Image Viewer
                 </button>
             </div>
         </form>
