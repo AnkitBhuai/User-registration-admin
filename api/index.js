@@ -34,18 +34,18 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema, 'verifies');
 
 // Routes
-app.get('/register', (req, res) => {
-   res.render('admin');
+app.get('/', (req, res) => {
+  res.render('admin');
 });
 
-
-app.get('/', (req, res) => {
- res.render('index', {
-    message: null, // or provide a default message
-    error: false,  // default error status
+app.get('/register', (req, res) => {
+  res.render('index', {
+    message: null,
+    error: false,
   });
 });
-app.post('/', async (req, res) => {
+
+app.post('/register', async (req, res) => {
   const { username, password } = req.body;
 
   // Check if fields are provided
@@ -73,7 +73,6 @@ app.post('/', async (req, res) => {
     });
   }
 });
-
 
 // Export the serverless handler
 module.exports = app;
