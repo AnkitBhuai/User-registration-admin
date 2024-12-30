@@ -33,15 +33,11 @@ const UserSchema = new mongoose.Schema({
 const User = mongoose.model('User', UserSchema, 'verifies');
 
 // Routes
-app.get('/admin', (req, res) => {
+app.get('/register', (req, res) => {
   res.render('admin');
 })
-app.get('/', (req, res) => {
-  res.render('index', { message: null, error: false });
-});
-
-app.post('/', async (req, res) => {
-  const { username, password } = req.body;
+app.post('/register', (req, res) => {
+    const { username, password } = req.body;
 
   if (!username || !password) {
     return res.status(400).render('index', {
@@ -64,6 +60,10 @@ app.post('/', async (req, res) => {
     });
   }
 });
+app.get('/', (req, res) => {
+  res.render('admin');
+});
+
 
 // Export the serverless handler
 module.exports = app;
